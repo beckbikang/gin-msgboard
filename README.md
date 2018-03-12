@@ -1,0 +1,1 @@
+使用gin实现一个基本的msgboard
