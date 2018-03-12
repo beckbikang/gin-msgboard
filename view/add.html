@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title th:text="${title}"></title>
+</head>
+<body>
+<div>
+    <a href="/msgboard/list">列表</a>
+    <form action="/msgboard/add" method="POST">
+        用户名: <input type="text" name="name" /><br/><br/>
+        消息:<br/><textarea name="msg" rows="10" cols="30"></textarea><br/>
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+</body>
+
+</html>

@@ -1,6 +1,15 @@
 {
 	"comment": "",
-	"ignore": "test",
-	"package": [],
-	"rootPath": "weibo.com/uverd/kproject/gin-msgboard"
+	"ignore": "ginmsglist",
+	"package": [
+		{
+			"checksumSHA1": "cpELhz30Sco7IBwvI6FyuShnjnQ=",
+			"path": "github.com/gin-gonic/gin",
+			"revision": "d459835d2b077e44f7c9b453505ee29881d5d12d",
+			"revisionTime": "2017-07-02T09:28:26Z",
+			"version": "v1.2",
+			"versionExact": "v1.2"
+		}
+	],
+	"rootPath": "weibo.com/uverd/bkproject/ginmsglist"
 }
