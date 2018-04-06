@@ -1,0 +1,17 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title th:text=""></title>
+</head>
+<body>
+<div>
+    <a href="/msg/list">列表</a>
+    <form action="/msg/add" method="POST">
+        用户名: <input type="text" name="name" /><br/><br/>
+        消息:<br/><textarea name="msg" rows="10" cols="30"></textarea><br/>
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+</body>
+
+</html>

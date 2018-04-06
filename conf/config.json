@@ -1,20 +1,21 @@
 {
+	
 	"database": {
-		"database": {
 			"type": "mysql",
 			"servers": [{
-				"schema": "msgboard",
+				"schema": "test",
 				"host": "127.0.0.1",
+				"port": 3306,
 				"password": "123456",
 				"user": "root",
 				"weight": 1,
 				"read": true,
 				"write": true
 			}]
-		}
-	},
+		},
 	"server": {
-		"port": 8181
+		"port": 8181,
+		"host": "127.0.0.1"
 	},
 	"log": {
 		"access": "log/msgboard_access.log",

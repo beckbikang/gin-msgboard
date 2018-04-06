@@ -1,10 +1,20 @@
 package main
 
 import (
-	"github.com/gin-msgboard/config"
 	"log"
+	"os"
+	"path/filepath"
+	"strconv"
 
+	"gin-msgboard/config"
+	"gin-msgboard/controller"
+	"gin-msgboard/storage"
 	"github.com/gin-gonic/gin"
+)
+
+const (
+	ErrnoOk int = iota
+	ErrorLoadTemplates
 )
 
 func init() {
@@ -12,18 +22,42 @@ func init() {
 }
 
 func main() {
-	/*
-		log.Println("start-run")
-		runHi()
-	*/
-	log.Println(GetIsInit())
-
-}
-
-func runHi() {
+	log.Println("start running ...")
 	router := gin.Default()
+
+	tmpls, err := filepath.Glob("view/*/*.tmpl")
+	if err != nil {
+		log.Printf("failed to load templates(1)")
+		os.Exit(ErrorLoadTemplates)
+	}
+
+	//加载html文件
+	router.LoadHTMLFiles(tmpls...)
+
+	//数据库初始化
+
 	router.GET("/hi", sayHi)
-	router.Run(":8080")
+	//添加数据
+	msgController := new(controller.Msglist)
+	log.Println(msgController)
+	//router.GET("/add", new(controller.Msglist).Add)
+	router.GET("/msg/add", msgController.Add)
+
+	router.POST("/msg/add", msgController.AddDone)
+
+	router.GET("/msg/list", msgController.List)
+
+	router.GET("/msg/del", msgController.Del)
+
+	//加载数据库
+	storage.InitDB()
+
+	//添加数据的post
+
+	//列表
+
+	router.Run(config.GetServer().Host + ":" +
+		strconv.Itoa(config.GetServer().Port))
 }
 
 func sayHi(c *gin.Context) {

@@ -7,28 +7,30 @@ import (
 )
 
 type DbServer struct {
-	Schema   string
-	Host     string
-	Password string
-	User     string
-	Weight   int
-	Read     bool
-	Write    bool
+	Schema   string `json:"schema"`
+	Host     string `json:"host"`
+	Port     int    `json:"port"`
+	Password string `json:"password"`
+	User     string `json:"user"`
+	Weight   int    `json:"weight"`
+	Read     bool   `json:"read"`
+	Write    bool   `json:"write"`
 }
 
 type DbInfo struct {
-	Type      string
-	DbServers []DbServer
+	Type      string     `json:"type"`
+	DbServers []DbServer `json:"servers"`
 }
 
 type ServerConfig struct {
-	Port int
+	Host string `json:"host"`
+	Port int    `json:"port"`
 }
 
 type LogConfig struct {
-	Access string
-	Error  string
-	Info   string
+	Access string `json:"access"`
+	Error  string `json:"error"`
+	Info   string `json:"info"`
 }
 
 type LimitConfig struct {
@@ -37,8 +39,8 @@ type LimitConfig struct {
 }
 
 type RedisConfig struct {
-	Host string
-	Port int
+	Host string `json:"host"`
+	Port int    `json:"port"`
 }
 
 type Config struct {

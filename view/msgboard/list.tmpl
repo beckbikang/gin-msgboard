@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>{{.title}}</title>
+</head>
+<body>
+
+<div>
+    <h3>留言板列表:</h3>
+    <a href="/msg/add">新增</a>
+    <table border="1">
+        <tr>
+            <td>用户名</td>
+            <td>留言</td>
+            <td>时间</td>
+            <td></td>
+        </tr>
+
+        {{range .list}}
+            <tr >
+            <td >{{.Name}}</td>
+            <td >{{.Msg}}</td>
+            <td >{{.Mtime}}</td>
+            <td><a href="/msg/del?id={{.Id}}">删除</a></td>
+        </tr>
+        {{end}}
+        
+    </table>
+    
+    {{if ne .prePage 0}} 
+        <div >
+            <div ><a href="/msg/list?page={{.prePage}}" >上一页</a></div>
+        </div>
+    {{end}}
+    {{if ne .lastPage 0}} 
+        <div >
+            <div ><a href="/msg/list?page={{.lastPage}}" >下页</a></div>
+        </div>
+    {{end}}
+
+
+</div>
+</body>
+
+</html>
